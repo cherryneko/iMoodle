@@ -3,21 +3,54 @@
 	  * @author
 	  * @since
 	  *
-	  * Este archivo recibe la peticion y decide qué controlador
-	  * se debe ejecutar
+	  * This file recive the petition's user
 	 */
 	 
-	 if(isset($_GET['controler']))
-		switch($_GET['controler'])
+	if(isset($_GET['controller'])){
+		$correctController = false;
+		$controller;
+		switch($_GET['controller'])
 		{
-			case 'alumno':
-				require('controlers/alumnoCtrl.php');
-				$controler = new alumnoCtrl();
+			case 'student':
+				require('controllers/studentCtrl.php');
+				$controller = new studentCtrl();
+				$correctController = true;
+				break;
+			case 'teacher':
+				require('controllers/teacherCtrl.php');
+				$controller = new teacherCtrl();
+				$correctController = true;
+				break;
+			case 'course':
+				require('controllers/courseCtrl.php');
+				$controller = new courseCtrl();
+				$correctController = true;
+				break;
+			case 'scholar_cycle':
+				require('controllers/scholar_cycleCtrl.php');
+				$controller = new scholar_cycleCtrl();
+				$correctController = true;
+				break;
+			case 'notes':
+				require('controllers/notesCtrl.php');
+				$controller = new notesCtrl();
+				$correctController = true;
+				break;
+			case 'assists':
+				require('controllers/assistsCtrl.php');
+				$controller = new assistsCtrl();
+				$correctController = true;
+				break;
+			case 'lists':
+				require('controllers/listsCtrl.php');
+				$controller = new listsCtrl();
+				$correctController = true;
 				break;
 			default:
 				//Code
 				break;
 		}
-		
-		$controler->ejecutar();
+	}
+	if($correctController)
+		$controller->eject();
 ?>
