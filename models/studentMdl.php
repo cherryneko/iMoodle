@@ -1,6 +1,6 @@
 <?php
 	/*
-	 * Student Model
+	 * Student model
 	 */
 	
 	class studentMdl
@@ -9,52 +9,43 @@
 		
 		function __construct()
 		{
-			//Create the database connection
+			//Create the connection to the database
 		}
 		/**
-		  * Method to insert a student in the database
+		  * Method to insert in the database
 		  */
 		function insert($data)
 		{
-			//calls to the database connection
-			//if has been inserted
+			//Send data to database
 			return true;
-			//else
 			return false;
 		}
 		/**
-		  * Method to delete a student in the database
+		  * Method to delete in the database
 		  */
 		function delete($data)
 		{
-			//calls to the database connection
-			//if has been deleted
+			//Send data to database
 			return true;
-			//else
 			return false;
 		}
 		/**
-		  * Method to select a student in the database
+		  * Method to select in the database
 		  */
 		function select($data)
 		{
-			//calls to the database connection
-			//if has been selected
+			//Send data to database
 			return true;
-			//else
 			return false;
 		}
 		/**
-		  * Method to update a student in the database
+		  * Method to update in the database
 		  */
 		function update($data)
 		{
-			//calls to the database connection
-			//if has been updated
+			//Send data to database
 			return true;
-			//else
 			return false;
 		}
-	
 	}
 ?>
