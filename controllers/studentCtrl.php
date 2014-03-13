@@ -11,7 +11,7 @@
 		function __construct(){
 			//Calls the construct to made this object
 			require('models/studentMdl.php');
-			$this->modelo = new alumnoMdl();
+			$this->model = new studentMdl();
 		}
 		
 		function eject(){
@@ -58,6 +58,10 @@
 		  */
 		function delete(){
 			//Permissions validate
+			//ins validate
+			$data = array();
+			$data['name'] = $this->validateName($_GET['name']);
+			$data['email'] = $this->validateEMail($_GET['email']);
 			$status = $this->model->delete($data);
 			
 			if($status){
