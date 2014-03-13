@@ -51,6 +51,6 @@
 				break;
 		}
 	}
-	if($correctController)
+	if(isset($correctController) && $correctController)
 		$controller->eject();
 ?>
