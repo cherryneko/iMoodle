@@ -7,7 +7,7 @@
 	 require('controllers/standarCtrl.php'); 
 	 class teacherCtrl extends standarCtrl{
 		public $model;
-		
+		public $data;
 		function __construct(){
 			//Calls the construct to made this object
 			require('models/teacherMdl.php');
@@ -37,20 +37,27 @@
 		  */
 		function insert(){
 			//Permissions validate
-			//ins validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			
-			$status = $this->model->insert($data);
-			
-			if($status){
-				//Load the view for an inserted teacher
-				include('views/teacherInsert.php');
-				//The teacher has been inserted
-			}
+			//Must have data
+			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email']))
+				include 'views/error.php';
 			else{
-				include('views/error.php');
+				$data['code'] = $this->validateCode($_GET['code']);
+				$data['password'] = $this->validatePassword($_GET['password']);
+				$data['name'] = $this->validateName($_GET['name']);
+				$data['email'] = $this->validateEMail($_GET['email']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->insert($data);
+				if($status){
+					//Load the view for an inserted teacher
+					include('views/teacherInsert.php');
+					//The teacher has been inserted
+				}
+				else{
+					include('views/error.php');
+				}
 			}
 		}
 		/**
@@ -58,19 +65,27 @@
 		  */
 		function delete(){
 			//Permissions validate
-			//ins validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			$status = $this->model->delete($data);
-			
-			if($status){
-				//Load the view for a deleted teacher
-				include('views/teacherDelete.php');
-				//The teacher has been deleted
-			}
+			//Must have data
+			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email']))
+				include 'views/error.php';
 			else{
-				include('views/error.php');
+				$data['code'] = $this->validateCode($_GET['code']);
+				$data['password'] = $this->validatePassword($_GET['password']);
+				$data['name'] = $this->validateName($_GET['name']);
+				$data['email'] = $this->validateEMail($_GET['email']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->delete($data);
+				if($status){
+					//Load the view for an deleted teacher
+					include('views/teacherDelete.php');
+					//The teacher has been deleted
+				}
+				else{
+					include('views/error.php');
+				}
 			}
 		}
 		/**
@@ -79,16 +94,26 @@
 		function select(){
 			//Permissions validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			$status = $this->model->select($data);
-			
-			if($status){
-				//Load the view for a selected teacher
-				include('views/teacherSelect.php');
-			}
+			//Must have data
+			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email']))
+				include 'views/error.php';
 			else{
-				include('views/error.php');
+				$data['code'] = $this->validateCode($_GET['code']);
+				$data['password'] = $this->validatePassword($_GET['password']);
+				$data['name'] = $this->validateName($_GET['name']);
+				$data['email'] = $this->validateEMail($_GET['email']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->select($data);
+				if($status){
+					//Load the view for an selected teacher
+					include('views/teacherSelect.php');
+					//The selected has been deleted
+				}
+				else{
+					include('views/error.php');
+				}
 			}
 		}
 		
@@ -98,16 +123,26 @@
 		function update(){
 			//Permissions validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			$status = $this->model->update($data);
-			
-			if($status){
-				//Load the view for a updated teacher
-				include('views/teacherUpdate.php');
-			}
+			//Must have data
+			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email']))
+				include 'views/error.php';
 			else{
-				include('views/error.php');
+				$data['code'] = $this->validateCode($_GET['code']);
+				$data['password'] = $this->validatePassword($_GET['password']);
+				$data['name'] = $this->validateName($_GET['name']);
+				$data['email'] = $this->validateEMail($_GET['email']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->update($data);
+				if($status){
+					//Load the view for an updated teacher
+					include('views/teacherUpdate.php');
+					//The selected has been updated
+				}
+				else{
+					include('views/error.php');
+				}
 			}
 		}
 	 }
