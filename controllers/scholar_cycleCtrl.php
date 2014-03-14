@@ -7,6 +7,7 @@
 	 require('controllers/standarCtrl.php'); 
 	 class scholar_cycleCtrl extends standarCtrl{
 		public $model;
+		public $data;
 		
 		function __construct(){
 			//Calls the construct to made this object
@@ -37,20 +38,27 @@
 		  */
 		function insert(){
 			//Permissions validate
-			//ins validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			
-			$status = $this->model->insert($data);
-			
-			if($status){
-				//Load the view for an inserted scholar_cycle
-				include('views/scholar_cycleInsert.php');
-				//The scholar_cycle has been inserted
-			}
+			//Must have data
+			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days']))
+				include 'views/error.php';
 			else{
-				include('views/error.php');
+				$data['cycle_format'] = $this->validateCycleFormat($_GET['cycle_format']);
+				$data['start_date'] = $this->validateDate($_GET['start_date']);
+				$data['end_date'] = $this->validateDate($_GET['end_date']);
+				$data['nolaboral_days'] = $this->validateNoLaboralDays($_GET['nolaboral_days']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->insert($data);
+				if($status){
+					//Load the view for an inserted scholar_cycle
+					include('views/scholar_cycleInsert.php');
+					//The scholar_cycle has been inserted
+				}
+				else{
+					include('views/error.php');
+				}
 			}
 		}
 		/**
@@ -58,19 +66,27 @@
 		  */
 		function delete(){
 			//Permissions validate
-			//ins validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			$status = $this->model->delete($data);
-			
-			if($status){
-				//Load the view for a deleted scholar_cycle
-				include('views/scholar_cycleDelete.php');
-				//The scholar_cycle has been deleted
-			}
+			//Must have data
+			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days']))
+				include 'views/error.php';
 			else{
-				include('views/error.php');
+				$data['cycle_format'] = $this->validateCycleFormat($_GET['cycle_format']);
+				$data['start_date'] = $this->validateDate($_GET['start_date']);
+				$data['end_date'] = $this->validateDate($_GET['end_date']);
+				$data['nolaboral_days'] = $this->validateNoLaboralDays($_GET['nolaboral_days']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->delete($data);
+				if($status){
+					//Load the view for an deleted scholar_cycle
+					include('views/scholar_cycleDelete.php');
+					//The scholar_cycle has been deleted
+				}
+				else{
+					include('views/error.php');
+				}
 			}
 		}
 		/**
@@ -79,16 +95,26 @@
 		function select(){
 			//Permissions validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			$status = $this->model->select($data);
-			
-			if($status){
-				//Load the view for a selected scholar_cycle
-				include('views/scholar_cycleSelect.php');
-			}
+			//Must have data
+			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days']))
+				include 'views/error.php';
 			else{
-				include('views/error.php');
+				$data['cycle_format'] = $this->validateCycleFormat($_GET['cycle_format']);
+				$data['start_date'] = $this->validateDate($_GET['start_date']);
+				$data['end_date'] = $this->validateDate($_GET['end_date']);
+				$data['nolaboral_days'] = $this->validateNoLaboralDays($_GET['nolaboral_days']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->select($data);
+				if($status){
+					//Load the view for an selected scholar_cycle
+					include('views/scholar_cycleDelete.php');
+					//The scholar_cycle has been selected
+				}
+				else{
+					include('views/error.php');
+				}
 			}
 		}
 		
@@ -98,17 +124,60 @@
 		function update(){
 			//Permissions validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			$status = $this->model->update($data);
-			
-			if($status){
-				//Load the view for a updated scholar_cycle
-				include('views/scholar_cycleUpdate.php');
-			}
+			//Must have data
+			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days']))
+				include 'views/error.php';
 			else{
-				include('views/error.php');
+				$data['cycle_format'] = $this->validateCycleFormat($_GET['cycle_format']);
+				$data['start_date'] = $this->validateDate($_GET['start_date']);
+				$data['end_date'] = $this->validateDate($_GET['end_date']);
+				$data['nolaboral_days'] = $this->validateNoLaboralDays($_GET['nolaboral_days']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->update($data);
+				if($status){
+					//Load the view for an updated scholar_cycle
+					include('views/scholar_cycleUpdate.php');
+					//The scholar_cycle has been updated
+				}
+				else{
+					include('views/error.php');
+				}
 			}
+		}
+		
+		/**
+		  * This functions returns the cycle format if the param is correct,
+		  * otherwise returns false
+		  * @param $cycle_format, this is the cycle format to validate
+		  * @return $cycle_format(string), if is correct
+		  * @return false, if isn't correct
+		  */
+		function validateCycleFormat($cycle_format){
+			return $cycle_format;
+		}
+		
+		/**
+		  * This functions returns the date if the param is correct,
+		  * otherwise returns false
+		  * @param $date, this is the date to validate
+		  * @return $date(string), if is correct
+		  * @return false, if isn't correct
+		  */
+		function validateDate($date){
+			return $date;
+		}
+		
+		/**
+		  * This functions returns the no laboral days if the param is correct,
+		  * otherwise returns false
+		  * @param $nolaboral_days (array), this are the no laboral days to validate
+		  * @return $nolaboral_days(array), if is correct
+		  * @return false, if isn't correct
+		  */
+		function validateNoLaboralDays($nolaboral_days){
+			return $nolaboral_days;
 		}
 	 }
 ?>
