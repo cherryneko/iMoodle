@@ -39,18 +39,24 @@
 			//Permissions validate
 			//ins validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			
-			$status = $this->model->insert($data);
-			
-			if($status){
-				//Load the view for an inserted assists
-				include('views/assistsInsert.php');
-				//The assists has been inserted
-			}
-			else{
-				include('views/error.php');
+			if(empty($_GET['activity'])||empty($_GET['percentage'])){
+				include'views/error.php';
+			}else{
+				$data['activity'] = $this->validateActivity($_GET['activity']);
+				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->insert($data);
+				if($status){
+					//Load the view for an updated student
+					include('views/assistsInsert.php');
+					//The student has been updated
+				}
+				else{
+					include('views/error.php');
+				}
+
 			}
 		}
 		/**
@@ -60,18 +66,25 @@
 			//Permissions validate
 			//ins validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			$status = $this->model->delete($data);
-			
-			if($status){
-				//Load the view for a deleted assists
-				include('views/assistsDelete.php');
-				//The assists has been deleted
-			}
-			else{
-				include('views/error.php');
-			}
+			if(empty($_GET['activity'])||empty($_GET['percentage'])){
+				include'views/error.php';
+			}else{
+				$data['activity'] = $this->validateActivity($_GET['activity']);
+				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->delete($data);
+				if($status){
+					//Load the view for an updated student
+					include('views/assistsDelete.php');
+					//The student has been updated
+				}
+				else{
+					include('views/error.php');
+				}
+
+			}	
 		}
 		/**
 		  * Method to select a assists
@@ -79,16 +92,24 @@
 		function select(){
 			//Permissions validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			$status = $this->model->select($data);
-			
-			if($status){
-				//Load the view for a selected assists
-				include('views/assistsSelect.php');
-			}
-			else{
-				include('views/error.php');
+			if(empty($_GET['activity'])||empty($_GET['percentage'])){
+				include'views/error.php';
+			}else{
+				$data['activity'] = $this->validateActivity($_GET['activity']);
+				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->select($data);
+				if($status){
+					//Load the view for an updated student
+					include('views/assistsSelect.php');
+					//The student has been updated
+				}
+				else{
+					include('views/error.php');
+				}
+
 			}
 		}
 		
@@ -98,17 +119,24 @@
 		function update(){
 			//Permissions validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
-			$status = $this->model->update($data);
-			
-			if($status){
-				//Load the view for a updated assists
-				include('views/assistsUpdate.php');
+			if(empty($_GET['activity'])||empty($_GET['percentage'])){
+				include'views/error.php';
+			}else{
+				$data['activity'] = $this->validateActivity($_GET['activity']);
+				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
+				
+				$status = $this->validateIns($data);
+				if($status)
+					$status = $this->model->update($data);
+				if($status){
+					//Load the view for an updated student
+					include('views/assistsUpdate.php');
+					//The student has been updated
+				}
+				else{
+					include('views/error.php');
+				}
+
 			}
-			else{
-				include('views/error.php');
-			}
-		}
 	 }
 ?>
