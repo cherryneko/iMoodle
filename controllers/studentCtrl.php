@@ -204,7 +204,7 @@
 				
 				if($status){
 					//Load the view for an success logged student
-					include('views/studenLogged.php');
+					include('views/studentLogged.php');
 					//The student has been logged
 				}
 				else{
