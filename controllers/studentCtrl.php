@@ -201,7 +201,12 @@
 		  * @return false, if isn't correct
 		  */
 		function validateGitHub($github){
-			return $github;
+			$p="/[a-zA-ZÃ±Ã‘\s]*[0-9]*/i";
+			if(preg_match($p,$git)==1){
+				return $github;
+			}else
+				return null;
+
 		}
 		
 		/**
@@ -212,7 +217,11 @@
 		  * @return false, if isn't correct
 		  */
 		function validateURL($url){
-			return $url;
+			$p="/^(([html]|[a-z])*:\W*|(www.))[a-z]*[0-9]*\.[a-z\.]{3,}/i";
+			if(preg_match($p,$url)==1){
+				return $url;
+			}else
+				return null;
 		}
 		
 		/**
@@ -223,7 +232,11 @@
 		  * @return false, if isn't correct
 		  */
 		function validateMobile($mobile){
-			return $mobile;
+			$p="/^[+]?[0-9]*\W/i";
+			if(preg_match($p,$movile)==1){
+				return $movile;
+			}else
+				return null;
 		}
 	 }
 ?>
