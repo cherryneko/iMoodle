@@ -159,4 +159,85 @@
 				}
 			}
 	 }
+
+	 function validateCycle($scholar_cycle){
+			$p="/[2][0][0-9]{2}[a-b]$/i";
+			if(preg_match($p,$scholar_cycle)==1){
+				return $scholar_cycle;
+			}
+		
+		return false;	
+		}
+		function validateSection($section){
+			$p="/^[d][0-9]{2}/i";
+			if(preg_match($p,$section)==1){
+				return $section;
+			}else
+				return false;
+			
+		}
+	function validateNrc($NRC){
+			$p="/^(0)([0-9]{4})$/i";
+			if(preg_match($p,$NRC)==1){
+				return $NRC;
+			}else
+				return false;
+			
+		}
+	function validateAcademy($academy){
+			$value=$this->validateName($academy);
+			if($value{
+				$status=$this->model->select($academy);
+				if($status){
+					return $academy;
+				}
+			}
+		
+		return false;
+			
+		}
+	function validateClass($class_days){
+			
+			$value=validateDay($class_days);
+			if($value){
+				return $class_days;
+			}else
+				return false;
+			
+		}
+	function validateHoursPerDay($hours_per_day){
+			$p="/^[1-5]\s{1}/i";
+			if(preg_match($p,$hours_per_day)==1){
+				return $hours_per_day;
+			}else
+				return false;
+			
+		}
+
+	function validateHoursEachDay($hours_each_day){
+			$valueDay=validateDay($hours_each_day[0]);
+			$valueTime=validateTime($hours_each_day[1]]);
+			if($valueDay&&$valueTime){
+				return $hours_each_day;
+			}
+		return false;	
+		}
+
+
+	function validateDay($day){
+		$dias= array("lunes","martes" ,"miercoles","jueves","viernes","sabado");
+		if(array_search($day, $dias)){
+			return true;
+		}
+		return false;
+	}
+
+	function validateTime($time){
+		$p="/^([0-2][0-9])[:]([0-5][0-9])$/i";
+			if(preg_match($p,$hours_per_day)==1){
+				return true;
+			}
+		return false;
+	}
+
 ?>

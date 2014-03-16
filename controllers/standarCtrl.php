@@ -22,7 +22,7 @@
 			if(preg_match($p,$nombre)==1){
 				return $name;
 			}
-			return null;
+			return false;
 		}
 		/**
 		  * This functions returns the email if the param is correct,
@@ -36,7 +36,7 @@
 			if(preg_match($p,$correo)==1){
 				return $name;
 			}else
-			return null;
+			return false;
 		}
 		
 		/**
@@ -51,19 +51,23 @@
 			if(preg_match($p,$codigo)==1){
 				return $code;
 			}else
-				return null;
+				return false;
 			
 		}
 		
 		/**
 		  * This functions returns the password if the param is correct,
 		  * otherwise returns false
-		  * @param $password, this is the code to validate
+		  * @param $password, this is the code to validate(8,15 characters)
 		  * @return $password(string), if is correct
 		  * @return false, if isn't correct
 		  */
 		function validatePassword($password){
-			return $password;
+			$p="/$^[A-Za-z0-9_\-]{8,15}/i";
+			if(preg_match($p,$codigo)==1){
+				return $password;
+			}else
+				return false;
 		}
 		
 		/**

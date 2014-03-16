@@ -155,9 +155,12 @@
 		  * @return false, if isn't correct
 		  */
 		function validateCycleFormat($cycle_format){
-			return $cycle_format;
+			$p="/[2][0][0-9]{2}[a-b]$/i";
+			if(preg_match($p,$cycle_format)==1){
+					return $cycle_format;		
+			}
+			return false;
 		}
-		
 		/**
 		  * This functions returns the date if the param is correct,
 		  * otherwise returns false
@@ -166,7 +169,11 @@
 		  * @return false, if isn't correct
 		  */
 		function validateDate($date){
-			return $date;
+			$dias= array("lunes","martes" ,"miercoles","jueves","viernes","sabado");
+			if(array_search($date, $dias)){
+				return $date;
+			}
+		return false;
 		}
 		
 		/**
@@ -177,6 +184,7 @@
 		  * @return false, if isn't correct
 		  */
 		function validateNoLaboralDays($nolaboral_days){
+			
 			return $nolaboral_days;
 		}
 	 }

@@ -190,7 +190,14 @@
 		  * @return false, if isn't correct
 		  */
 		function validateCareer($career){
-			return $career;
+			$value=$this->validateName($career);
+			if($value){
+				$status=$this->model->select($career);
+				if($status){
+					return $career;
+				}
+			}
+			return false;
 		}
 		
 		/**
@@ -205,7 +212,7 @@
 			if(preg_match($p,$git)==1){
 				return $github;
 			}else
-				return null;
+				return false;
 
 		}
 		
@@ -221,7 +228,7 @@
 			if(preg_match($p,$url)==1){
 				return $url;
 			}else
-				return null;
+				return false;
 		}
 		
 		/**
@@ -236,7 +243,7 @@
 			if(preg_match($p,$movile)==1){
 				return $movile;
 			}else
-				return null;
+				return false;
 		}
 	 }
 ?>
