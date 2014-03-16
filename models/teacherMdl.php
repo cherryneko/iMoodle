@@ -57,5 +57,15 @@
 			return true;
 			return false;
 		}
+	
+		/**
+		  * Method to change the password in the database
+		  */
+		function change_password($data)
+		{
+			//Send data to database
+			return true;
+			return false;
+		}
 	}
 ?>

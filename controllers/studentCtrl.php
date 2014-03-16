@@ -33,6 +33,9 @@
 					case 'login':
 						$this->login();
 						break;
+					case 'change_password':
+						$this->change_password();
+						break;
 				}
 		}
 		/**
@@ -200,7 +203,7 @@
 				if(isset($_GET['email']))	
 					$data['email'] = $this->validatePassword($_GET['email']);	
 				
-				$status = $this->model->update($data);
+				$status = $this->model->login($data);
 				
 				if($status){
 					//Load the view for an success logged student
@@ -212,6 +215,36 @@
 				}
 			}
 		}
+
+		/**
+		  * Method to change the password for a student
+		  */
+		function change_password(){
+			//Permissions validate
+			$data = array();
+			//Must have data
+			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email'])))
+				include 'views/error.php';
+			else{
+				$data['password'] = $this->validatePassword($_GET['password']);
+				if(isset($_GET['code']))
+					$data['code'] = $this->validateName($_GET['code']);
+				if(isset($_GET['email']))	
+					$data['email'] = $this->validatePassword($_GET['email']);	
+				
+				$status = $this->model->change_password($data);
+				
+				if($status){
+					//Load the view for an success change password for a student
+					include('views/studentChangedPassword.php');
+					//The student has been changed his password
+				}
+				else{
+					include('views/error.php');
+				}
+			}
+		}	
+	
 		/**
 		  * This functions returns the career if the param is correct,
 		  * otherwise returns false
