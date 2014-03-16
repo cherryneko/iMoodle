@@ -47,5 +47,15 @@
 			return true;
 			return false;
 		}
+	
+		/**
+		  * Method to login in the database
+		  */
+		function login($data)
+		{
+			//Send data to database
+			return true;
+			return false;
+		}
 	}
 ?>
