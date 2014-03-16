@@ -30,6 +30,12 @@
 					case 'update':
 						$this->update();
 						break;
+					case 'login':
+						$this->login();
+						break;
+					case 'change_password':
+						$this->change_password();
+						break;
 				}
 		}
 		/**
@@ -39,7 +45,7 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				include 'views/error.php';
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
@@ -76,7 +82,7 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				include 'views/error.php';
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
@@ -113,7 +119,7 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				include 'views/error.php';
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
@@ -151,7 +157,7 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				include 'views/error.php';
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
@@ -181,7 +187,64 @@
 				}
 			}
 		}
-		
+		/**
+		  * Method to login for a student
+		  */
+		function login(){
+			//Permissions validate
+			$data = array();
+			//Must have data
+			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email'])))
+				include 'views/error.php';
+			else{
+				$data['password'] = $this->validatePassword($_GET['password']);
+				if(isset($_GET['code']))
+					$data['code'] = $this->validateName($_GET['code']);
+				if(isset($_GET['email']))	
+					$data['email'] = $this->validatePassword($_GET['email']);	
+				
+				$status = $this->model->login($data);
+				
+				if($status){
+					//Load the view for an success logged student
+					include('views/studentLogged.php');
+					//The student has been logged
+				}
+				else{
+					include('views/error.php');
+				}
+			}
+		}
+
+		/**
+		  * Method to change the password for a student
+		  */
+		function change_password(){
+			//Permissions validate
+			$data = array();
+			//Must have data
+			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email'])))
+				include 'views/error.php';
+			else{
+				$data['password'] = $this->validatePassword($_GET['password']);
+				if(isset($_GET['code']))
+					$data['code'] = $this->validateName($_GET['code']);
+				if(isset($_GET['email']))	
+					$data['email'] = $this->validatePassword($_GET['email']);	
+				
+				$status = $this->model->change_password($data);
+				
+				if($status){
+					//Load the view for an success change password for a student
+					include('views/studentChangedPassword.php');
+					//The student has been changed his password
+				}
+				else{
+					include('views/error.php');
+				}
+			}
+		}	
+	
 		/**
 		  * This functions returns the career if the param is correct,
 		  * otherwise returns false

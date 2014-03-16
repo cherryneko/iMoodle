@@ -47,5 +47,25 @@
 			return true;
 			return false;
 		}
+	
+		/**
+		  * Method to login in the database
+		  */
+		function login($data)
+		{
+			//Send data to database
+			return true;
+			return false;
+		}
+	
+		/**
+		  * Method to change the password in the database
+		  */
+		function change_password($data)
+		{
+			//Send data to database
+			return true;
+			return false;
+		}
 	}
 ?>

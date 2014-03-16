@@ -19,10 +19,10 @@
 		  */
 		function validateName($name){
 			$p="/^[a-zA-ZÃ±Ã‘\s\W]+([\s][a-zA-ZÃ±Ã‘\s\W]+)*$/i";
-			if(preg_match($p,$nombre)==1){
+			if(preg_match($p,$name)==1)
 				return $name;
-			}
-			return false;
+			else
+				return false;
 		}
 		/**
 		  * This functions returns the email if the param is correct,
@@ -33,10 +33,10 @@
 		  */
 		function validateEMail($email){
 			$p="/^([\da-z_\.-]+)@([\da-z\.-]+)\.([a-z\.]*)$/i";
-			if(preg_match($p,$correo)==1){
-				return $name;
-			}else
-			return false;
+			if(preg_match($p,$email)==1)
+				return $email;
+			else			
+				return false;
 		}
 		
 		/**
@@ -48,9 +48,9 @@
 		  */
 		function validateCode($code){
 			$p="/^[a-z]?[0-9]{9,}?/i";
-			if(preg_match($p,$codigo)==1){
+			if(preg_match($p,$code)==1)
 				return $code;
-			}else
+			else
 				return false;
 			
 		}
@@ -64,9 +64,9 @@
 		  */
 		function validatePassword($password){
 			$p="/$^[A-Za-z0-9_\-]{8,15}/i";
-			if(preg_match($p,$codigo)==1){
+			if(preg_match($p,$password)==1)
 				return $password;
-			}else
+			else
 				return false;
 		}
 		
