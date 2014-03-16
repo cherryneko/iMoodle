@@ -46,6 +46,8 @@
 				$controller = new listsCtrl();
 				$correctController = true;
 				break;
+			case 'assists':
+				break;
 			default:
 				//Code
 				break;
