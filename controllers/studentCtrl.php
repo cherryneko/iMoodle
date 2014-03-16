@@ -39,7 +39,7 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				include 'views/error.php';
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
@@ -76,7 +76,7 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				include 'views/error.php';
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
@@ -113,7 +113,7 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				include 'views/error.php';
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
@@ -151,7 +151,7 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				include 'views/error.php';
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
