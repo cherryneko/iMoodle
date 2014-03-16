@@ -47,5 +47,15 @@
 			return true;
 			return false;
 		}
+	
+		/**
+		  * Method to copy in the database
+		  */
+		function copy($data)
+		{
+			//Send data to database
+			return true;
+			return false;
+		}
 	}
 ?>
