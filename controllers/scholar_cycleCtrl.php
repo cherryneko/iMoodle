@@ -184,7 +184,12 @@
 		  * @return false, if isn't correct
 		  */
 		function validateNoLaboralDays($nolaboral_days){
-			
+			$p="/^([1-3][0-9][\/][0-1][1-9][\/][0-9][1-9])$/i";
+			foreach ($nolaboral_days as &$valor) {
+					if(preg_match($p,$valor)!=0){
+						return false;
+					}
+			}
 			return $nolaboral_days;
 		}
 	 }

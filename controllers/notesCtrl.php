@@ -39,8 +39,8 @@
 			//Permissions validate
 			//ins validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
+			$data['activity'] = $this->validateActivity($_GET['activity']);
+			$data['percentage'] = $this->validatePercentage($_GET['percentage']);
 			
 			$status = $this->model->insert($data);
 			
@@ -60,8 +60,9 @@
 			//Permissions validate
 			//ins validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
+			
+			$data['activity'] = $this->validateActivity($_GET['activity']);
+			$data['percentage'] = $this->validatePercentage($_GET['percentage']);
 			$status = $this->model->delete($data);
 			
 			if($status){
@@ -79,8 +80,8 @@
 		function select(){
 			//Permissions validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
+			$data['activity'] = $this->validateActivity($_GET['activity']);
+			$data['percentage'] = $this->validatePercentage($_GET['percentage']);
 			$status = $this->model->select($data);
 			
 			if($status){
@@ -98,8 +99,8 @@
 		function update(){
 			//Permissions validate
 			$data = array();
-			$data['name'] = $this->validateName($_GET['name']);
-			$data['email'] = $this->validateEMail($_GET['email']);
+			$data['activity'] = $this->validateActivity($_GET['activity']);
+			$data['percentage'] = $this->validatePercentage($_GET['percentage']);
 			$status = $this->model->update($data);
 			
 			if($status){
@@ -110,5 +111,22 @@
 				include('views/error.php');
 			}
 		}
+
 	 }
+	 function validateActivity($activity){
+	 	$p="/^[a-zA-ZÃ±Ã‘\s\W]+([\s][a-zA-ZÃ±Ã‘\s\W]+([0-9]*))*$/i";
+	 	if(preg_match($p,)==1){
+	 		return $activity;
+	 	}
+	 	return false;
+	 }
+
+	 function validatePercentage($percentage){
+	 	$p="/^([0-9]{1,3}[%])$/i";
+	 	if(preg_match($p,$percentage)){
+	 		return $percentage;
+	 	}
+	 	return false;
+	 }
+	 
 ?>
