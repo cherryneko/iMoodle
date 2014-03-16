@@ -46,6 +46,7 @@
 				$data['name'] = $this->validateName($_GET['name']);
 				$data['career'] = $this->validateCareer($_GET['career']);
 				$data['email'] = $this->validateEMail($_GET['email']);
+				$data['password'] = $this->validatePassword($_GET['password']);
 				
 				//Optional data
 				if(isset($_GET['mobile']))
@@ -82,6 +83,7 @@
 				$data['name'] = $this->validateName($_GET['name']);
 				$data['career'] = $this->validateCareer($_GET['career']);
 				$data['email'] = $this->validateEMail($_GET['email']);
+				$data['password'] = $this->validatePassword($_GET['password']);
 				
 				//Optional data
 				if(isset($_GET['mobile']))
@@ -118,6 +120,7 @@
 				$data['name'] = $this->validateName($_GET['name']);
 				$data['career'] = $this->validateCareer($_GET['career']);
 				$data['email'] = $this->validateEMail($_GET['email']);
+				$data['password'] = $this->validatePassword($_GET['password']);
 				
 				//Optional data
 				if(isset($_GET['mobile']))
@@ -155,6 +158,7 @@
 				$data['name'] = $this->validateName($_GET['name']);
 				$data['career'] = $this->validateCareer($_GET['career']);
 				$data['email'] = $this->validateEMail($_GET['email']);
+				$data['password'] = $this->validatePassword($_GET['password']);
 				
 				//Optional data
 				if(isset($_GET['mobile']))
