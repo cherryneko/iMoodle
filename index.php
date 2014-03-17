@@ -53,6 +53,11 @@
 				break;
 		}
 	}
-	if(isset($correctController) && $correctController)
+	if(isset($correctController) && $correctController){
 		$controller->eject();
+	}
+	else {
+		$_POST['error'] = 'The controller does not exists';
+		include 'views/error.php';
+	}
 ?>

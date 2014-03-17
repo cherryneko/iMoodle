@@ -50,6 +50,7 @@
 				//The notes has been inserted
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}
@@ -71,6 +72,7 @@
 				//The notes has been deleted
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}
@@ -108,6 +110,7 @@
 				include('views/notesUpdate.php');
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}

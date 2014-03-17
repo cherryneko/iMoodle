@@ -47,5 +47,15 @@
 			return true;
 			return false;
 		}
+	
+		/**
+		  * Method to generate an extra list in the database
+		  */
+		function generateExtra($data)
+		{
+			//Send data to database
+			return true;
+			return false;
+		}
 	}
 ?>

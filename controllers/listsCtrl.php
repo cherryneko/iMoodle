@@ -30,6 +30,9 @@
 					case 'update':
 						$this->update();
 						break;
+					case 'generateExtra';
+						$this->generateExtra();
+						break;
 				}
 		}
 		/**
@@ -50,6 +53,7 @@
 				//The lists has been inserted
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}
@@ -70,6 +74,7 @@
 				//The lists has been deleted
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}
@@ -88,6 +93,7 @@
 				include('views/listsSelect.php');
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}
@@ -107,6 +113,27 @@
 				include('views/listsUpdate.php');
 			}
 			else{
+				$_POST['error']='Error to do this action';
+				include('views/error.php');
+			}
+		}
+	
+		/**
+		  * Method to generate an extra list
+		  */
+		function generateExtra(){
+			//Permissions validate
+			$data = array();
+			$data['name'] = $this->validateName($_GET['name']);
+			$data['email'] = $this->validateEMail($_GET['email']);
+			$status = $this->model->generateExtra($data);
+			
+			if($status){
+				//Load the view for an extra generated lists
+				include('views/listsCopy.php');
+			}
+			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}

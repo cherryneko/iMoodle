@@ -45,8 +45,10 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email'])){
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
+			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['name'] = $this->validateName($_GET['name']);
@@ -71,6 +73,7 @@
 					//The student has been inserted
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -82,8 +85,10 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email'])){
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
+			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['name'] = $this->validateName($_GET['name']);
@@ -108,6 +113,7 @@
 					//The student has been selected
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -119,8 +125,10 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email'])){
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
+			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['name'] = $this->validateName($_GET['name']);
@@ -145,6 +153,7 @@
 					//The student has been deleted
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -157,8 +166,10 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email'])){
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
+			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['name'] = $this->validateName($_GET['name']);
@@ -183,6 +194,7 @@
 					//The student has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -194,8 +206,10 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email'])))
+			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email']))){
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
+			}
 			else{
 				$data['password'] = $this->validatePassword($_GET['password']);
 				if(isset($_GET['code']))
@@ -211,6 +225,7 @@
 					//The student has been logged
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -223,8 +238,10 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email'])))
+			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email']))){
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
+			}
 			else{
 				$data['password'] = $this->validatePassword($_GET['password']);
 				if(isset($_GET['code']))
@@ -240,6 +257,7 @@
 					//The student has been changed his password
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}

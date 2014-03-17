@@ -43,7 +43,9 @@
 			//ins validate
 			$data = array();
 			if(empty($_GET['scholar_cycle'])||empty($_GET['name'])||empty($_GET['section'])||empty($_GET['NRC'])||empty($_GET['academy'])||empty($_GET['class_days'])||empty($_GET['hours_per_day'])||empty($_GET['hours_each_day'])){
-				include'views/error.php';
+				$_POST['error']='This action requires mandatory fields';
+				include 'views/error.php';
+			}
 			}else{
 				$data['scholar_cycle'] = $this->validateCycle($_GET['scholar_cycle']);
 				$data['name'] = $this->validateName($_GET['name']);
@@ -63,6 +65,7 @@
 					//The course has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -75,8 +78,10 @@
 			//ins validate
 			$data = array();
 			if(empty($_GET['scholar_cycle'])||empty($_GET['name'])||empty($_GET['section'])||empty($_GET['NRC'])||empty($_GET['academy'])||empty($_GET['class_days'])||empty($_GET['hours_per_day'])||empty($_GET['hours_each_day'])){
-				include'views/error.php';
-			}else{
+				$_POST['error']='This action requires mandatory fields';
+				include 'views/error.php';
+			}
+			else{
 				$data['scholar_cycle'] = $this->validateCycle($_GET['scholar_cycle']);
 				$data['name'] = $this->validateName($_GET['name']);
 				$data['section'] = $this->validateSection($_GET['section']);
@@ -95,6 +100,7 @@
 					//The course has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -106,8 +112,10 @@
 			//Permissions validate
 			$data = array();
 			if(empty($_GET['scholar_cycle'])||empty($_GET['name'])||empty($_GET['section'])||empty($_GET['NRC'])||empty($_GET['academy'])||empty($_GET['class_days'])||empty($_GET['hours_per_day'])||empty($_GET['hours_each_day'])){
-				include'views/error.php';
-			}else{
+				$_POST['error']='This action requires mandatory fields';
+				include 'views/error.php';
+			}
+			else{
 				$data['scholar_cycle'] = $this->validateCycle($_GET['scholar_cycle']);
 				$data['name'] = $this->validateName($_GET['name']);
 				$data['section'] = $this->validateSection($_GET['section']);
@@ -126,6 +134,7 @@
 					//The course has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -138,8 +147,10 @@
 			//Permissions validate
 			$data = array();
 			if(empty($_GET['scholar_cycle'])||empty($_GET['name'])||empty($_GET['section'])||empty($_GET['NRC'])||empty($_GET['academy'])||empty($_GET['class_days'])||empty($_GET['hours_per_day'])||empty($_GET['hours_each_day'])){
-				include'views/error.php';
-			}else{
+				$_POST['error']='This action requires mandatory fields';
+				include 'views/error.php';
+			}
+			else{
 				$data['scholar_cycle'] = $this->validateCycle($_GET['scholar_cycle']);
 				$data['name'] = $this->validateName($_GET['name']);
 				$data['section'] = $this->validateSection($_GET['section']);
@@ -158,6 +169,7 @@
 					//The course has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -171,8 +183,10 @@
 			//ins validate
 			$data = array();
 			if(empty($_GET['scholar_cycle'])||empty($_GET['name'])||empty($_GET['section'])||empty($_GET['NRC'])||empty($_GET['academy'])||empty($_GET['class_days'])||empty($_GET['hours_per_day'])||empty($_GET['hours_each_day'])){
-				include'views/error.php';
-			}else{
+				$_POST['error']='This action requires mandatory fields';
+				include 'views/error.php';
+			}
+			else{
 				$data['scholar_cycle'] = $this->validateCycle($_GET['scholar_cycle']);
 				$data['name'] = $this->validateName($_GET['name']);
 				$data['section'] = $this->validateSection($_GET['section']);
@@ -191,6 +205,7 @@
 					//The course has been copied
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
