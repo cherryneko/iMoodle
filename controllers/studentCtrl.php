@@ -1,7 +1,7 @@
 <?php
 	/**
 	  * Student Controler
-	  * @autor 
+	  * @author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	  * @since
 	  */
 	 require('controllers/standarCtrl.php'); 
@@ -45,14 +45,14 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email'])){
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['name'] = $this->validateName($_GET['name']);
 				$data['career'] = $this->validateCareer($_GET['career']);
+				
 				$data['email'] = $this->validateEMail($_GET['email']);
 				$data['password'] = $this->validatePassword($_GET['password']);
 				
@@ -64,6 +64,7 @@
 				if(isset($_GET['web_page']))	
 					$data['web_page'] = $this->validateURL($_GET['web_page']);	
 				
+
 				$status = $this->validateIns($data);
 				if($status)
 					$status = $this->model->insert($data);
@@ -85,10 +86,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email'])){
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['name'] = $this->validateName($_GET['name']);
@@ -125,10 +125,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email'])){
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['name'] = $this->validateName($_GET['name']);
@@ -166,10 +165,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email'])){
+			if(empty($_GET['password'])||empty($_GET['code'])||empty($_GET['name'])||empty($_GET['career'])||empty($_GET['email']))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['name'] = $this->validateName($_GET['name']);
@@ -206,10 +204,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email']))){
+			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email'])))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['password'] = $this->validatePassword($_GET['password']);
 				if(isset($_GET['code']))
@@ -238,10 +235,8 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email']))){
-				$_POST['error']='This action requires mandatory fields';
+			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email'])))
 				include 'views/error.php';
-			}
 			else{
 				$data['password'] = $this->validatePassword($_GET['password']);
 				if(isset($_GET['code']))
@@ -290,7 +285,7 @@
 		  */
 		function validateGitHub($github){
 			$p="/[a-zA-ZÃ±Ã‘\s]*[0-9]*/i";
-			if(preg_match($p,$git)==1){
+			if(preg_match($p,$github)==1){
 				return $github;
 			}else
 				return false;
@@ -321,7 +316,7 @@
 		  */
 		function validateMobile($mobile){
 			$p="/^[+]?[0-9]*\W/i";
-			if(preg_match($p,$movile)==1){
+			if(preg_match($p,$mobile)==1){
 				return $movile;
 			}else
 				return false;

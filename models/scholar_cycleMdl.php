@@ -1,5 +1,6 @@
 <?php
 	/*
+	 *@author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	 * Scholar Cycle model
 	 */
 	

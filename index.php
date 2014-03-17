@@ -1,6 +1,6 @@
 <?php 
 	/**
-	  * @author
+	  * @author @author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	  * @since
 	  *
 	  * This file recive the petition's user
@@ -45,8 +45,6 @@
 				require('controllers/listsCtrl.php');
 				$controller = new listsCtrl();
 				$correctController = true;
-				break;
-			case 'assists':
 				break;
 			default:
 				//Code

@@ -1,7 +1,7 @@
 <?php
 	/**
 	  * Standar Controller
-	  * @autor
+	  * @autor @author @author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	  * @since
 	  */
 	  
@@ -63,7 +63,7 @@
 		  * @return false, if isn't correct
 		  */
 		function validatePassword($password){
-			$p="/$^[A-Za-z0-9_\-]{8,15}/i";
+			$p="/([a-z]*[0-9]*){8,15}/i";
 			if(preg_match($p,$password)==1)
 				return $password;
 			else

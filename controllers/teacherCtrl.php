@@ -1,7 +1,7 @@
 <?php
 	/**
 	  * Teacher Controler
-	  * @autor 
+	  * @author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	  * @since
 	  */
 	 require('controllers/standarCtrl.php'); 
@@ -45,10 +45,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email'])){
+			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email']))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['password'] = $this->validatePassword($_GET['password']);
@@ -76,10 +75,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email'])){
+			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email']))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['password'] = $this->validatePassword($_GET['password']);
@@ -107,10 +105,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email'])){
+			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email']))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['password'] = $this->validatePassword($_GET['password']);
@@ -139,10 +136,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email'])){
+			if(empty($_GET['code'])||empty($_GET['password'])||empty($_GET['name'])||empty($_GET['email']))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['code'] = $this->validateCode($_GET['code']);
 				$data['password'] = $this->validatePassword($_GET['password']);
@@ -171,10 +167,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email']))){
+			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email'])))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['password'] = $this->validatePassword($_GET['password']);
 				if(isset($_GET['code']))
@@ -203,10 +198,9 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email']))){
+			if((empty($_GET['password'])&&empty($_GET['code']))||(empty($_GET['password'])&&empty($_GET['email'])))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['password'] = $this->validatePassword($_GET['password']);
 				if(isset($_GET['code']))

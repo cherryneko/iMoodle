@@ -1,5 +1,6 @@
 <?php
 	/*
+	 *@author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	 * Course model
 	 */
 	
@@ -47,7 +48,7 @@
 			return true;
 			return false;
 		}
-	
+
 		/**
 		  * Method to copy in the database
 		  */

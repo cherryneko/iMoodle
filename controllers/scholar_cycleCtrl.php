@@ -1,7 +1,7 @@
 <?php
 	/**
 	  * Scholar Cycle Controller
-	  * @autor 
+	  * @autor @author @author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	  * @since
 	  */
 	 require('controllers/standarCtrl.php'); 
@@ -40,16 +40,16 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days'])){
+			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days']))
 				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
-			}
 			else{
 				$data['cycle_format'] = $this->validateCycleFormat($_GET['cycle_format']);
 				$data['start_date'] = $this->validateDate($_GET['start_date']);
 				$data['end_date'] = $this->validateDate($_GET['end_date']);
 				$data['nolaboral_days'] = $this->validateNoLaboralDays($_GET['nolaboral_days']);
 				
+			
 				$status = $this->validateIns($data);
 				if($status)
 					$status = $this->model->insert($data);
@@ -72,6 +72,7 @@
 			$data = array();
 			//Must have data
 			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days']))
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
 			else{
 				$data['cycle_format'] = $this->validateCycleFormat($_GET['cycle_format']);
@@ -101,6 +102,7 @@
 			$data = array();
 			//Must have data
 			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days']))
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
 			else{
 				$data['cycle_format'] = $this->validateCycleFormat($_GET['cycle_format']);
@@ -113,7 +115,7 @@
 					$status = $this->model->select($data);
 				if($status){
 					//Load the view for an selected scholar_cycle
-					include('views/scholar_cycleDelete.php');
+					include('views/scholar_cycleSelect.php');
 					//The scholar_cycle has been selected
 				}
 				else{
@@ -131,6 +133,7 @@
 			$data = array();
 			//Must have data
 			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days']))
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
 			else{
 				$data['cycle_format'] = $this->validateCycleFormat($_GET['cycle_format']);
@@ -175,8 +178,8 @@
 		  * @return false, if isn't correct
 		  */
 		function validateDate($date){
-			$dias= array("lunes","martes" ,"miercoles","jueves","viernes","sabado");
-			if(array_search($date, $dias)){
+			$p="/^([0-3][0-9][\/][0-1][1-9][\/][0-9][1-9])$/i";
+			if(preg_match($p,$date)==1){
 				return $date;
 			}
 		return false;
@@ -191,8 +194,8 @@
 		  */
 		function validateNoLaboralDays($nolaboral_days){
 			$p="/^([1-3][0-9][\/][0-1][1-9][\/][0-9][1-9])$/i";
-			foreach ($nolaboral_days as &$valor) {
-					if(preg_match($p,$valor)!=0){
+			foreach ($nolaboral_days as $valor) {
+					if(preg_match($p,$valor)!=1){
 						return false;
 					}
 			}

@@ -1,7 +1,7 @@
 <?php
 	/**
 	  * Notes Controller
-	  * @autor 
+	  * @autor @author @author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	  * @since
 	  */
 	 require('controllers/standarCtrl.php'); 
@@ -91,6 +91,7 @@
 				include('views/notesSelect.php');
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}
@@ -115,21 +116,40 @@
 			}
 		}
 
-	 }
-	 function validateActivity($activity){
-	 	$p="/^[a-zA-ZÃ±Ã‘\s\W]+([\s][a-zA-ZÃ±Ã‘\s\W]+([0-9]*))*$/i";
-	 	if(preg_match($p,)==1){
-	 		return $activity;
-	 	}
-	 	return false;
-	 }
+				/**
+		  * This functions returns the Activity if the param is correct,
+		  * otherwise returns false
+		  * @param $activity, this is the code to validate
+		  * @return $activity(string), if is correct
+		  * @return false, if isn't correct
+		  */		
+			function validateActivity($activity){
+				 	$p="/^[a-zA-ZÃ±Ã‘\s\W]+([\s][a-zA-ZÃ±Ã‘\s\W]+([0-9]*))*$/i";
+				 	if(preg_match($p,$activity)==1){
+				 		return $activity;
+				 	}
+				 	return false;
+				 }
+				/**
+		  * This functions returns the percentage if the param is correct,
+		  * otherwise returns false
+		  * @param $percentage, this is the code to validate
+		  * @return $percentage(string), if is correct
+		  * @return false, if isn't correct
+		  */
+				 function validatePercentage($percentage){
+				 	$p="/^([0-9]{1,3}[%])$/i";
+				 	if(preg_match($p,$percentage)){
+				 		return $percentage;
+				 	}
+				 	return false;
+				 }
 
-	 function validatePercentage($percentage){
-	 	$p="/^([0-9]{1,3}[%])$/i";
-	 	if(preg_match($p,$percentage)){
-	 		return $percentage;
-	 	}
-	 	return false;
+
+
+		
+
 	 }
+	 
 	 
 ?>

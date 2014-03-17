@@ -1,7 +1,7 @@
 <?php
 	/**
 	  * Assists Controller
-	  * @autor 
+	  * @author @author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	  * @since
 	  */
 	 require('controllers/standarCtrl.php'); 
@@ -39,13 +39,12 @@
 			//Permissions validate
 			//ins validate
 			$data = array();
-			if(empty($_GET['activity'])||empty($_GET['percentage'])){
-				$_POST['error']='This action requires mandatory fields';
-				include 'views/error.php';
-			}
-			else{
-				$data['activity'] = $this->validateActivity($_GET['activity']);
-				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
+			if(empty($_GET['students'])||empty($_GET['date'])){
+				include'views/error.php';
+			}else{
+			$data['students'] = $this->validateStudents($_GET['students']);
+			$data['date']=$this->validateDate($_GET['date']);
+			
 				
 				$status = $this->validateIns($data);
 				if($status)
@@ -69,13 +68,13 @@
 			//Permissions validate
 			//ins validate
 			$data = array();
-			if(empty($_GET['activity'])||empty($_GET['percentage'])){
-				$_POST['error']='This action requires mandatory fields';
-				include 'views/error.php';
-			}
-			else{
-				$data['activity'] = $this->validateActivity($_GET['activity']);
-				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
+			if(empty($_GET['students'])||empty($_GET['date'])){
+				include'views/error.php';
+			}else{
+				
+			$data['students'] = $this->validateStudents($_GET['students']);
+			$data['date']=$this->validateDate($_GET['date']);
+			
 				
 				$status = $this->validateIns($data);
 				if($status)
@@ -98,13 +97,12 @@
 		function select(){
 			//Permissions validate
 			$data = array();
-			if(empty($_GET['activity'])||empty($_GET['percentage'])){
-				$_POST['error']='This action requires mandatory fields';
-				include 'views/error.php';
-			}
-			else{
-				$data['activity'] = $this->validateActivity($_GET['activity']);
-				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
+			if(empty($_GET['students'])||empty($_GET['date'])){
+				include'views/error.php';
+			}else{
+				$data['students'] = $this->validateStudents($_GET['students']);
+			$data['date']=$this->validateDate($_GET['date']);
+			
 				
 				$status = $this->validateIns($data);
 				if($status)
@@ -128,14 +126,12 @@
 		function update(){
 			//Permissions validate
 			$data = array();
-			if(empty($_GET['activity'])||empty($_GET['percentage'])){
-				$_POST['error']='This action requires mandatory fields';
-				include 'views/error.php';
-			}
-			else{
-				$data['activity'] = $this->validateActivity($_GET['activity']);
-				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
-				
+			if(empty($_GET['students'])||empty($_GET['date'])){
+				include'views/error.php';
+			}else{
+				$data['students'] = $this->validateStudents($_GET['students']);
+			$data['date']=$this->validateDate($_GET['date']);
+			
 				$status = $this->validateIns($data);
 				if($status)
 					$status = $this->model->update($data);
@@ -151,28 +147,37 @@
 
 			}
 	 	}
-		/**
-		  * This functions returns the activity if the param is correct,
+	 	/**
+		  * This functions returns the students if the param is correct,
 		  * otherwise returns false
-		  * @param $activity, this is the activity to validate
-		  * @return $activity(string), if is correct
+		  * @param $students, this is the code to validate
+		  * @return $students(array), if is correct
 		  * @return false, if isn't correct
 		  */
-		function validateActivity($activity){
-			return true;
+	 	function validateStudents($students){
+			foreach ($students as $value) {
+				$status=$this->validateName($value);
+				if(!$status){
+					return $students;
+				}
+			}
+
 			return false;
 		}
-	
 		/**
-		  * This functions returns the percentage if the param is correct,
+		  * This functions returns the date if the param is correct,
 		  * otherwise returns false
-		  * @param $percentage, this is the percentage to validate
-		  * @return $percentage(string), if is correct
+		  * @param $date, this is the code to validate
+		  * @return $date(string), if is correct
 		  * @return false, if isn't correct
 		  */
-		function validatePercentage($percentage){
-			return true;
-			return false;
+
+		function validateDate($date){
+			$p="/^([0-3][0-9][\/][0-1][1-9][\/][0-9][1-9])$/i";
+			if(preg_match($p,$date)==1){
+				return $date;
+			}
+		return false;
 		}
-	}
+	 }
 ?>

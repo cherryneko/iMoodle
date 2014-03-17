@@ -1,5 +1,6 @@
 <?php
 	/*
+	 * @author Hernandez Mendez Julio Adrian ,Avila Arrezola Irma Araceli
 	 * Student model
 	 */
 	
@@ -42,26 +43,6 @@
 		  * Method to update in the database
 		  */
 		function update($data)
-		{
-			//Send data to database
-			return true;
-			return false;
-		}
-	
-		/**
-		  * Method to login in the database
-		  */
-		function login($data)
-		{
-			//Send data to database
-			return true;
-			return false;
-		}
-	
-		/**
-		  * Method to change the password in the database
-		  */
-		function change_password($data)
 		{
 			//Send data to database
 			return true;
