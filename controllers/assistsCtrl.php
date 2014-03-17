@@ -138,5 +138,29 @@
 				}
 
 			}
-	 }
+	 	}
+		/**
+		  * This functions returns the activity if the param is correct,
+		  * otherwise returns false
+		  * @param $activity, this is the activity to validate
+		  * @return $activity(string), if is correct
+		  * @return false, if isn't correct
+		  */
+		function validateActivity($activity){
+			return true;
+			return false;
+		}
+	
+		/**
+		  * This functions returns the percentage if the param is correct,
+		  * otherwise returns false
+		  * @param $percentage, this is the percentage to validate
+		  * @return $percentage(string), if is correct
+		  * @return false, if isn't correct
+		  */
+		function validatePercentage($percentage){
+			return true;
+			return false;
+		}
+	}
 ?>
