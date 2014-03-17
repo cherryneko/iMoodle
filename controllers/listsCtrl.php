@@ -50,6 +50,7 @@
 				//The lists has been inserted
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}
@@ -70,6 +71,7 @@
 				//The lists has been deleted
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}
@@ -88,6 +90,7 @@
 				include('views/listsSelect.php');
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}
@@ -107,6 +110,7 @@
 				include('views/listsUpdate.php');
 			}
 			else{
+				$_POST['error']='Error to do this action';
 				include('views/error.php');
 			}
 		}

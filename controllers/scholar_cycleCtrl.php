@@ -40,8 +40,10 @@
 			//Permissions validate
 			$data = array();
 			//Must have data
-			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days']))
+			if(empty($_GET['cycle_format'])||empty($_GET['start_date'])||empty($_GET['end_date'])||empty($_GET['nolaboral_days'])){
+				$_POST['error']='This action requires mandatory fields';
 				include 'views/error.php';
+			}
 			else{
 				$data['cycle_format'] = $this->validateCycleFormat($_GET['cycle_format']);
 				$data['start_date'] = $this->validateDate($_GET['start_date']);
@@ -57,6 +59,7 @@
 					//The scholar_cycle has been inserted
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -85,6 +88,7 @@
 					//The scholar_cycle has been deleted
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -113,6 +117,7 @@
 					//The scholar_cycle has been selected
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}
@@ -142,6 +147,7 @@
 					//The scholar_cycle has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 			}

@@ -40,8 +40,10 @@
 			//ins validate
 			$data = array();
 			if(empty($_GET['activity'])||empty($_GET['percentage'])){
-				include'views/error.php';
-			}else{
+				$_POST['error']='This action requires mandatory fields';
+				include 'views/error.php';
+			}
+			else{
 				$data['activity'] = $this->validateActivity($_GET['activity']);
 				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
 				
@@ -54,6 +56,7 @@
 					//The student has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 
@@ -67,8 +70,10 @@
 			//ins validate
 			$data = array();
 			if(empty($_GET['activity'])||empty($_GET['percentage'])){
-				include'views/error.php';
-			}else{
+				$_POST['error']='This action requires mandatory fields';
+				include 'views/error.php';
+			}
+			else{
 				$data['activity'] = $this->validateActivity($_GET['activity']);
 				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
 				
@@ -81,6 +86,7 @@
 					//The student has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 
@@ -93,8 +99,10 @@
 			//Permissions validate
 			$data = array();
 			if(empty($_GET['activity'])||empty($_GET['percentage'])){
-				include'views/error.php';
-			}else{
+				$_POST['error']='This action requires mandatory fields';
+				include 'views/error.php';
+			}
+			else{
 				$data['activity'] = $this->validateActivity($_GET['activity']);
 				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
 				
@@ -107,6 +115,7 @@
 					//The student has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 
@@ -120,8 +129,10 @@
 			//Permissions validate
 			$data = array();
 			if(empty($_GET['activity'])||empty($_GET['percentage'])){
-				include'views/error.php';
-			}else{
+				$_POST['error']='This action requires mandatory fields';
+				include 'views/error.php';
+			}
+			else{
 				$data['activity'] = $this->validateActivity($_GET['activity']);
 				$data['percentage'] = $this->validatePercentage($_GET['percentage']);
 				
@@ -134,6 +145,7 @@
 					//The student has been updated
 				}
 				else{
+					$_POST['error']='Error to do this action';
 					include('views/error.php');
 				}
 
